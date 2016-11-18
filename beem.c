@@ -423,7 +423,7 @@ PHP_MINIT_FUNCTION(beem)
     ce.create_object = beem_create_new_object;
     beem_ce = zend_register_internal_class(&ce TSRMLS_CC);
     
-    // 注册静态变量
+    
     int value, i;
       for (i = 0; ; ++i) {
           const char *name = be.symbol (i, &value);
@@ -432,9 +432,9 @@ PHP_MINIT_FUNCTION(beem)
       zend_declare_class_constant_long(beem_ce, name, strlen(name), (long) value TSRMLS_CC);
     }
 
-    // 最后一条错误信息
+    
     zend_declare_property_string(beem_ce, ZEND_STRL("errorInfo"), "", ZEND_ACC_PUBLIC TSRMLS_CC); 
-    // 错误代码
+    
     zend_declare_property_long(beem_ce, ZEND_STRL("errorCode"), 0, ZEND_ACC_PUBLIC TSRMLS_CC);
 
     return SUCCESS;
